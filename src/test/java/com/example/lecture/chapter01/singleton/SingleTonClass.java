@@ -1,5 +1,8 @@
 package com.example.lecture.chapter01.singleton;
 
+/**
+ * 멀티스레드 환경 세이프 한가?? NO
+ */
 public class SingleTonClass {
 
     private static SingleTonClass instance;
@@ -12,6 +15,5 @@ public class SingleTonClass {
         }
         return instance;
     }
-
-
 }
+
