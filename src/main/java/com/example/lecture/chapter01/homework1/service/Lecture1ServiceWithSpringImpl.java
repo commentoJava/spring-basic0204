@@ -19,6 +19,11 @@ public class Lecture1ServiceWithSpringImpl implements  Lecture1ServiceWithSpring
     }
 
     @Override
+    public void findByKey(String key) {
+        lecture1RepositoryWithSpring.findByKey(key);
+    }
+
+    @Override
     public void homework(String key) {
         String value =  lecture1RepositoryWithSpring.findByKey(key);
         log.info("Lecture1 과제입니다." + value);

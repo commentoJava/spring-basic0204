@@ -19,11 +19,20 @@ public class HomeWork1_1 {
     }
 
 
+
+    @Test
+    void save() {
+        lecture1ServiceNoSpring.save("박병호","박병호");
+    }
+
+    @Test
+    void findByKey() {
+        lecture1ServiceNoSpring.findByKey("박병호");
+    }
+
     @Test
     void homework1_1() {
         lecture1ServiceNoSpring.save("박병호","박병호");
-
         lecture1ServiceNoSpring.homework("박병호");
-
     }
 }

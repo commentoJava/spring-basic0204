@@ -19,7 +19,6 @@ public class Lecture1RepositoryWithSpringImpl implements  Lecture1RepositoryWith
     @Override
     public Map<String, String> save(String key, String value) {
         store.put(key, value);
-        log.info("저장 완료" + key + value);
         return store;
     }
 

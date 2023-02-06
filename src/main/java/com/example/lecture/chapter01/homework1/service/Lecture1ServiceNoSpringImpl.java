@@ -19,6 +19,11 @@ public class Lecture1ServiceNoSpringImpl implements Lecture1ServiceNoSpring {
     }
 
     @Override
+    public void findByKey(String key) {
+        lecture1RepositoryNoSpring.findByKey(key);
+    }
+
+    @Override
     public void homework(String key) {
        String value =  lecture1RepositoryNoSpring.findByKey(key);
        log.info("Lecture1 과제입니다." + value);
