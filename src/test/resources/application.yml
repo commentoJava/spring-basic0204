@@ -1,0 +1,25 @@
+secret:
+  value: "defaultCommento"
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+secret:
+  value: localcommento
+
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+
+secret:
+  value: prodcommento
+
+
