@@ -21,7 +21,6 @@ import java.util.Locale;
 @RequestMapping("/lec2/tmi")
 public class TmiController {
 
-
     // localhost:8080/lec2/tmi/v1
     @GetMapping("/v1")
     public String tmi(HttpServletRequest request,
