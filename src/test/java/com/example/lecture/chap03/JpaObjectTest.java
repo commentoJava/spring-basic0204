@@ -41,6 +41,8 @@ class JpaObjectTest {
         em.clear();
     }
 
+
+
     @AfterEach
     void clear() {
 
@@ -65,6 +67,36 @@ class JpaObjectTest {
         log.info("\n ======= COMPANY 조회 END ======");
 
     }
+
+
+    @Test
+    @DisplayName("이들은 같은 객체일까요?")
+    void isSameObject1(){
+        dataSetUp();
+
+        Member findMember1 = em.find(Member.class, 1L);
+
+        Member findMember2 = em.find(Member.class, 1L);
+
+
+        log.info("\n 같은 객체일까요 ? {}",findMember1 == findMember2);
+    }
+
+    @Test
+    @DisplayName("이들은 같은 객체일까요?")
+    void isSameObject2(){
+        dataSetUp();
+
+        Member findMember1 = em.find(Member.class, 1L);
+
+        em.clear();
+
+        Member findMember2 = em.find(Member.class, 1L);
+
+
+        log.info("\n 같은 객체일까요 ? {}",findMember1 == findMember2);
+    }
+
 
     @Test
     @DisplayName("연관 관계를 맺은 관계에서 값을 설정할 때 이렇게 하면 안됩니다.")
@@ -102,36 +134,6 @@ class JpaObjectTest {
     }
 
     @Test
-    @DisplayName("이들은 같은 객체일까요?")
-    void isSameObject1(){
-        dataSetUp();
-
-        Member findMember1 = em.find(Member.class, 1L);
-
-        Member findMember2 = em.find(Member.class, 1L);
-
-
-        log.info("\n 같은 객체일까요 ? {}",findMember1 == findMember2);
-    }
-
-    @Test
-    @DisplayName("이들은 같은 객체일까요?")
-    void isSameObject2(){
-        dataSetUp();
-
-        Member findMember1 = em.find(Member.class, 1L);
-
-        em.clear();
-        em.flush();
-
-        Member findMember2 = em.find(Member.class, 1L);
-
-
-        log.info("\n 같은 객체일까요 ? {}",findMember1 == findMember2);
-    }
-
-
-    @Test
     @DisplayName("CASCADE 설정을 한다면 한번 persist로 엮여있는 객체들도 저장됨")
     public void cascade(){
         Member member = new Member();
@@ -146,6 +148,8 @@ class JpaObjectTest {
         em.persist(company);
 
     }
+
+
 
 
     @Test
