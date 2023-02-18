@@ -21,8 +21,8 @@ public class UserController {
     }
 
     @GetMapping("/user/login")
-    public Optional<User> UserLogin(Long userId) {
-        return userService.login(userId);
+    public User UserLogin(Long userId) {
+        return userService.login(userId).get();
     }
 
     @PostMapping("/user/join")
