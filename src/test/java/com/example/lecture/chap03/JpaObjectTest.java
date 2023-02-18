@@ -9,6 +9,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,12 +17,13 @@ import java.util.List;
 @SpringBootTest
 @Slf4j
 @Transactional
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 class JpaObjectTest {
 
     @PersistenceContext
     private EntityManager em;
 
-    // beforeEach는 일부러 하지 않음. (테스트 보여줄 것이 있기에)
+    // beforeEach는 일부러 하지 않음. \
     void dataSetUp() {
 
         Member member = new Member();
