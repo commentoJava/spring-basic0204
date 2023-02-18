@@ -26,7 +26,13 @@ public class Company {
 
     private String companyName;
 
-    @OneToMany(mappedBy = "company")
+    @OneToMany(mappedBy = "company" ,cascade = CascadeType.ALL)
     private List<Member> members = new ArrayList<>();
+
+
+
+    public void changeCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
 }

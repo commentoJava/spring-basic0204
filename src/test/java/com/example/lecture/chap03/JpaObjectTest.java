@@ -23,7 +23,7 @@ class JpaObjectTest {
     @PersistenceContext
     private EntityManager em;
 
-    // beforeEach는 일부러 하지 않음. \
+    // beforeEach는 일부러 하지 않음.
     void dataSetUp() {
 
         Member member = new Member();
@@ -61,7 +61,7 @@ class JpaObjectTest {
         log.info("\n ======= COMPANY 조회 START ======");
 
         for (Company company : em.createQuery("select c from Company  c", Company.class).getResultList()) {
-            log.info("company id :{}  name : {} , company.member:  {} ", company.getId(), company.getCompanyName(), company.getMembers());
+            log.info("\n company id :{}  name : {} , company.member:  {} ", company.getId(), company.getCompanyName(), company.getMembers());
         }
 
         log.info("\n ======= COMPANY 조회 END ======");
@@ -82,15 +82,23 @@ class JpaObjectTest {
         log.info("\n 같은 객체일까요 ? {}",findMember1 == findMember2);
     }
 
+
+
     @Test
     @DisplayName("이들은 같은 객체일까요?")
     void isSameObject2(){
         dataSetUp();
 
+
+        // db에서 조회 후 1차캐시에 집어넣음
         Member findMember1 = em.find(Member.class, 1L);
 
+
+        // 영속성 컨텍스트를 비움 (1차캐시가 날아감)
         em.clear();
 
+
+        // db에서 조회
         Member findMember2 = em.find(Member.class, 1L);
 
 
@@ -170,6 +178,8 @@ class JpaObjectTest {
     void retrieveMemberAndCompany_SOLVE() {
         dataSetUp();
 
+
+        // select * from member where memberId = id join
         Member findMember = em.createQuery("select m from Member m join fetch m.company where m.id = :id", Member.class)
                                   .setParameter("id",1L)
                                       .getSingleResult();
@@ -191,6 +201,8 @@ class JpaObjectTest {
         }
         em.flush();
         em.clear();
+
+        //select * from member
 
         List<Member> memberByPaging = em.createQuery("select m from Member m order by m.age asc", Member.class)
                                     .setFirstResult(2)
