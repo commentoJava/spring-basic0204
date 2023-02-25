@@ -37,23 +37,23 @@ public class ExceptionController {
         private String productId;
     }
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResponse illegalExceptionHandler(IllegalArgumentException e){
-        log.error("\n illegalErrorHandler ex = ",e);
-        return new ErrorResponse("BAD_REQUEST",e.getMessage());
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<?> productExceptionHandler(ProductException e){
-        log.error("\n ProductException ex = ", e);
-        return new ResponseEntity<>(new ErrorResponse("ex",e.getMessage()),HttpStatus.BAD_REQUEST);
-    }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResponse runtimeExceptionHandler(RuntimeException e){
-        log.error("\n RuntimeException ex = ",e);
-        return new ErrorResponse("no", e.getMessage());
-    }
+//    @ResponseStatus(HttpStatus.BAD_REQUEST)
+//    @ExceptionHandler(IllegalArgumentException.class)
+//    public ErrorResponse illegalExceptionHandler(IllegalArgumentException e){
+//        log.error("\n illegalErrorHandler ex = ",e);
+//        return new ErrorResponse("BAD_REQUEST",e.getMessage());
+//    }
+//
+//    @ExceptionHandler
+//    public ResponseEntity<?> productExceptionHandler(ProductException e){
+//        log.error("\n ProductException ex = ", e);
+//        return new ResponseEntity<>(new ErrorResponse("ex",e.getMessage()),HttpStatus.BAD_REQUEST);
+//    }
+//
+//    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+//    @ExceptionHandler
+//    public ErrorResponse runtimeExceptionHandler(RuntimeException e){
+//        log.error("\n RuntimeException ex = ",e);
+//        return new ErrorResponse("no", e.getMessage());
+//    }
 }
