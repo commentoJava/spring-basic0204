@@ -21,6 +21,7 @@ import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,9 @@ class ProductTest {
 
     @PersistenceContext
     EntityManager em;
+
+    @Autowired
+    JPAQueryFactory jpaQueryFactory;
 
 
 
@@ -96,7 +100,6 @@ class ProductTest {
         for (Product product : products) {
             log.info("\n product.name = {}" , product.getProductName());
         }
-
     }
 
     @Test
@@ -759,6 +762,7 @@ class ProductTest {
                                                                               QProduct.product.quantity))
                                                      .from(QProduct.product)
                                                      .fetch();
+
 
 
         List<ProductDto> fieldFetch =  queryFactory

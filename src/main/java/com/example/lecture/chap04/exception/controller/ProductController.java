@@ -1,4 +1,4 @@
-package com.example.lecture.chap04.controller;
+package com.example.lecture.chap04.exception.controller;
 
 import com.example.lecture.chap04.dto.ProductCreateDto;
 import com.example.lecture.chap04.service.ProductService;
